@@ -27,5 +27,18 @@ public class MarsRoverTest {
         assertEquals("W", withWDirection.getDirection());
     }
 
+    @Test
+    public void should_change_direction_when_receive_L_cmd() {
+        MarsRover marsRover = new MarsRover(0, 0, "N");
+        marsRover = marsRover.execute("L");
+        assertEquals(Position.build(0, 0), marsRover.getPosition());
+        assertEquals("W", marsRover.getDirection());
+
+        marsRover = marsRover.execute("L");
+        assertEquals("S", marsRover.getDirection());
+
+        marsRover = marsRover.execute("R");
+        assertEquals("W", marsRover.getDirection());
+    }
 
 }

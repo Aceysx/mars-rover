@@ -2,15 +2,19 @@ package com.thoughtworks.marsrover;
 
 public class MarsRover {
     private Position position;
-    private String direction;
+    private Direction direction;
 
     public MarsRover(int x, int y, String direction) {
         this.position = Position.build(x, y);
-        this.direction = direction;
+        this.direction = Direction.build(direction);
     }
 
     public MarsRover execute(String cmd) {
         Position position = this.getPosition();
+        if (!"M".equals(cmd)) {
+            this.direction = direction.next(cmd);
+            return this;
+        }
         if ("N".equals(this.getDirection())) {
             this.position = Position.build(position.getX(), position.getY() + 1);
         }
@@ -32,7 +36,7 @@ public class MarsRover {
     }
 
     public String getDirection() {
-        return direction;
+        return direction.getValue();
     }
 
 
