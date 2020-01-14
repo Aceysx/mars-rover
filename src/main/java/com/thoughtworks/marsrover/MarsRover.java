@@ -1,22 +1,16 @@
 package com.thoughtworks.marsrover;
 
 public class MarsRover {
-    private int x;
-    private int y;
+    private Position position;
     private String direction;
 
     public MarsRover(int x, int y, String direction) {
-        this.x = x;
-        this.y = y;
+        this.position = Position.build(x, y);
         this.direction = direction;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+    public Position getPosition() {
+        return position;
     }
 
     public String getDirection() {

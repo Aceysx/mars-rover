@@ -8,9 +8,9 @@ public class MarsRoverTest {
 
     @Test
     public void should_init_marsRover() {
+        Position position = Position.build(0, 0);
         MarsRover marsRover = new MarsRover(0, 0, "N");
-        assertEquals(0, marsRover.getX());
-        assertEquals(0, marsRover.getY());
+        assertEquals(position, marsRover.getPosition());
         assertEquals("N", marsRover.getDirection());
     }
 
