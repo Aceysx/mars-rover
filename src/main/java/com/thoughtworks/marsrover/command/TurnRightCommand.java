@@ -1,4 +1,8 @@
-package com.thoughtworks.marsrover;
+package com.thoughtworks.marsrover.command;
+
+import com.thoughtworks.marsrover.Direction;
+import com.thoughtworks.marsrover.Location;
+import com.thoughtworks.marsrover.Position;
 
 public class TurnRightCommand implements Command {
 
@@ -10,6 +14,7 @@ public class TurnRightCommand implements Command {
         return Location.build(
             position.getX(),
             position.getY(),
-            String.valueOf(direction.next()));
+            String.valueOf(direction.next()),
+            location.isBackward());
     }
 }

@@ -3,7 +3,7 @@ package com.thoughtworks.marsrover;
 public enum Direction {
     N, E, S, W;
 
-    Direction next() {
+    public Direction next() {
         Direction[] values = Direction.values();
         int ordinal = this.ordinal() + 1;
         if (ordinal > values.length - 1) {
@@ -12,13 +12,18 @@ public enum Direction {
         return values[ordinal];
     }
 
-    Direction prev() {
+    public Direction prev() {
         Direction[] values = Direction.values();
-        int ordinal = this.ordinal() - +1;
+        int ordinal = this.ordinal() - 1;
         if (ordinal < 0) {
             return values[values.length - 1];
         }
         return values[ordinal];
     }
 
+    public String reverse() {
+        Direction[] values = Direction.values();
+        int ordinal = this.ordinal() - values.length / 2;
+        return ordinal < 0 ? values[this.ordinal() + values.length / 2].toString() : values[ordinal].toString();
+    }
 }

@@ -50,6 +50,7 @@ public class MarsRoverTest {
 
         assertTrue(marsRover.isBackward());
     }
+
     @Test
     public void should_enter_forward_state_when_receive_H_cmd() {
         MarsRover marsRover = new MarsRover(0, 0, "N");
@@ -58,5 +59,31 @@ public class MarsRoverTest {
         assertFalse(marsRover.isBackward());
     }
 
+    @Test
+    public void should_go_correct_direction_when_backward() {
+        MarsRover marsRover = new MarsRover(0, 0, "N");
+        marsRover = marsRover.execute("B");
+
+        marsRover.execute("M");
+        assertEquals(Position.build(0, -1), marsRover.getPosition());
+
+        marsRover.execute("M");
+        assertEquals(Position.build(0, -2), marsRover.getPosition());
+
+        marsRover.execute("L");
+        assertEquals(Position.build(0, -2), marsRover.getPosition());
+        assertEquals("E", marsRover.getDirection());
+
+        marsRover.execute("L");
+        assertEquals(Position.build(0, -2), marsRover.getPosition());
+        assertEquals("N", marsRover.getDirection());
+
+        marsRover.execute("M");
+        assertEquals(Position.build(0, -1), marsRover.getPosition());
+
+        marsRover.execute("H");
+        assertEquals("S", marsRover.getDirection());
+        assertEquals(Position.build(-1, 0), marsRover.getPosition());
+    }
 
 }
