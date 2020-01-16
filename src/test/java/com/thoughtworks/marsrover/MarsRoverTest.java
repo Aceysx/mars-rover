@@ -3,6 +3,8 @@ package com.thoughtworks.marsrover;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class MarsRoverTest {
 
@@ -40,5 +42,21 @@ public class MarsRoverTest {
         marsRover = marsRover.execute("R");
         assertEquals("W", marsRover.getDirection());
     }
+
+    @Test
+    public void should_enter_backward_state_when_receive_B_cmd() {
+        MarsRover marsRover = new MarsRover(0, 0, "N");
+        marsRover = marsRover.execute("B");
+
+        assertTrue(marsRover.isBackward());
+    }
+    @Test
+    public void should_enter_forward_state_when_receive_H_cmd() {
+        MarsRover marsRover = new MarsRover(0, 0, "N");
+        marsRover = marsRover.execute("H");
+
+        assertFalse(marsRover.isBackward());
+    }
+
 
 }
