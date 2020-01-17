@@ -29,8 +29,8 @@ public class Location {
 
     public Location reverse() {
         return Location.build(
-            this.position.getY(),
             this.position.getX(),
+            this.position.getY(),
             this.direction.reverse(),
             !this.isBackward
         );

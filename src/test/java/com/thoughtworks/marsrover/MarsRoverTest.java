@@ -83,7 +83,7 @@ public class MarsRoverTest {
 
         marsRover.execute("H");
         assertEquals("S", marsRover.getDirection());
-        assertEquals(Position.build(-1, 0), marsRover.getPosition());
+        assertEquals(Position.build(0, -1), marsRover.getPosition());
     }
 
 }
