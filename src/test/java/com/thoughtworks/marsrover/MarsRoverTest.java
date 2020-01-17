@@ -1,12 +1,22 @@
 package com.thoughtworks.marsrover;
 
+import com.thoughtworks.marsrover.model.Radar;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class MarsRoverTest {
+    @Mock
+    private Radar radar;
 
     @Test
     public void should_init_marsRover() {
@@ -86,5 +96,23 @@ public class MarsRoverTest {
         assertEquals(Position.build(0, -1), marsRover.getPosition());
     }
 
+    @Test
+    public void should_mark_trap_when_car_move_into_a_trap_not_mark() {
+        Position trapPosition = Position.build(0, 1);
+        when(radar.inTrap(trapPosition)).thenReturn(true);
+        MarsRover marsRover = new MarsRover(0, 0, "N", radar);
+        marsRover.execute("M");
+        assertTrue(marsRover.inTrap());
+        verify(radar, times(1)).inTrap(trapPosition);
+    }
+
+    @Test
+    public void should_stop_when_car_move_into_a_mark_trap() {
+        Position trapPosition = Position.build(0, 1);
+        when(radar.isMarkedTrap(trapPosition)).thenReturn(true);
+        MarsRover marsRover = new MarsRover(0, 0, "N", radar);
+        marsRover.execute("M");
+        assertEquals(Position.build(0, 0), marsRover.getPosition());
+    }
 
 }

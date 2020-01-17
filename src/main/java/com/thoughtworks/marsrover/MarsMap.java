@@ -2,7 +2,6 @@ package com.thoughtworks.marsrover;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 public class MarsMap {
@@ -22,15 +21,11 @@ public class MarsMap {
         return traps;
     }
 
-    public boolean verify(Position position) {
-        Optional<Position> found = this.traps.stream()
-            .filter(item -> item.equals(position))
-            .findFirst();
-        found.ifPresent(item -> this.markTraps.add(item));
-        return found.isPresent();
-    }
-
     public Set<Position> getMarkTraps() {
         return this.markTraps;
+    }
+
+    public void mark(Position position) {
+        this.markTraps.add(position);
     }
 }

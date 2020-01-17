@@ -15,6 +15,18 @@ public class Radar {
     }
 
     public boolean inTrap(Position position) {
-        return this.marsMap.verify(position);
+        boolean inTrap = this.marsMap.getTraps()
+            .stream()
+            .anyMatch(item -> item.equals(position));
+        if (inTrap) {
+            this.marsMap.mark(position);
+        }
+        return inTrap;
+    }
+
+    public boolean isMarkedTrap(Position position) {
+        return this.marsMap.getMarkTraps()
+            .stream()
+            .anyMatch(item -> item.equals(position));
     }
 }
