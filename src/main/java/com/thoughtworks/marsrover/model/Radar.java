@@ -4,7 +4,11 @@ import com.thoughtworks.marsrover.MarsMap;
 import com.thoughtworks.marsrover.Position;
 
 public class Radar {
-    private MarsMap marsMap;
+    private MarsMap marsMap = MarsMap.build();
+
+    public Radar() {
+
+    }
 
     public Radar(MarsMap marsMap) {
         this.marsMap = marsMap;

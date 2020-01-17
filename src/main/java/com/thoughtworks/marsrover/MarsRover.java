@@ -9,6 +9,7 @@ public class MarsRover {
 
     public MarsRover(int x, int y, String direction) {
         this.location = Location.build(x, y, direction);
+        this.radar = new Radar();
     }
 
     public MarsRover(int x, int y, String direction, Radar radar) {

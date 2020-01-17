@@ -1,5 +1,6 @@
 package com.thoughtworks.marsrover;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,14 @@ public class MarsMap {
     private MarsMap(List<Position> traps) {
         this.traps = traps;
         this.markTraps = new HashSet<>();
+    }
+
+    public static MarsMap build() {
+        List<Position> DEFAULT_TRAPS = Arrays.asList(
+            Position.build(1, 1),
+            Position.build(1, 2)
+        );
+        return new MarsMap(DEFAULT_TRAPS);
     }
 
     public static MarsMap build(List<Position> traps) {
