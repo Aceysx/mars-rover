@@ -15,6 +15,7 @@ public class MarsRover {
         return this;
     }
 
+
     public Position getPosition() {
         return location.getPosition();
     }

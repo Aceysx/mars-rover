@@ -86,4 +86,5 @@ public class MarsRoverTest {
         assertEquals(Position.build(0, -1), marsRover.getPosition());
     }
 
+
 }
