@@ -1,5 +1,6 @@
 package com.thoughtworks.marsrover;
 
+import com.thoughtworks.marsrover.model.BreakdownEnum;
 import com.thoughtworks.marsrover.model.MarsRover;
 import com.thoughtworks.marsrover.model.Position;
 import com.thoughtworks.marsrover.model.Radar;
@@ -115,6 +116,27 @@ public class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0, 0, "N", radar);
         marsRover.execute("M");
         assertEquals(Position.build(0, 0), marsRover.getPosition());
+    }
+
+    @Test
+    public void should_ignore_cmd_when_car_broken() {
+        MarsRover marsRover = new MarsRover(0, 0, "N", radar);
+        marsRover.broken(BreakdownEnum.FORWARD);
+        marsRover.execute("M");
+        assertEquals(Position.build(0, 0), marsRover.getPosition());
+
+        marsRover.broken(BreakdownEnum.BACKWARD);
+        marsRover.execute("B");
+        assertEquals(Position.build(0, 0), marsRover.getPosition());
+
+        marsRover.broken(BreakdownEnum.TURN_LEFT);
+        marsRover.execute("L");
+        assertEquals(Position.build(0, 0), marsRover.getPosition());
+        assertEquals("N", marsRover.getDirection());
+
+        marsRover.execute("R");
+        assertEquals(Position.build(0, 0), marsRover.getPosition());
+        assertEquals("E", marsRover.getDirection());
     }
 
 }
