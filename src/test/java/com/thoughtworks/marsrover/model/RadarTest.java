@@ -1,5 +1,7 @@
 package com.thoughtworks.marsrover.model;
 
+import com.thoughtworks.marsrover.model.vo.Position;
+import com.thoughtworks.marsrover.model.vo.Radar;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

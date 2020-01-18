@@ -1,6 +1,8 @@
-package com.thoughtworks.marsrover.model;
+package com.thoughtworks.marsrover.model.vo;
 
-public class Location {
+import com.thoughtworks.marsrover.model.Direction;
+
+public class Location implements ValueObject{
     private Position position;
     private Direction direction;
     private boolean isBackward;

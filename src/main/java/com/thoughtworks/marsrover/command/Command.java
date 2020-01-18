@@ -1,6 +1,6 @@
 package com.thoughtworks.marsrover.command;
 
-import com.thoughtworks.marsrover.model.Location;
+import com.thoughtworks.marsrover.model.vo.Location;
 
 public interface Command {
 

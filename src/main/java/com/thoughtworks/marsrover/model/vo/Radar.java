@@ -1,6 +1,8 @@
-package com.thoughtworks.marsrover.model;
+package com.thoughtworks.marsrover.model.vo;
 
-public class Radar {
+import com.thoughtworks.marsrover.model.MarsMap;
+
+public class Radar implements ValueObject{
     private MarsMap marsMap = MarsMap.build();
 
     public Radar() {

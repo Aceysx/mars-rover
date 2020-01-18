@@ -1,14 +1,18 @@
-package com.thoughtworks.marsrover.model;
+package com.thoughtworks.marsrover.model.marsRover;
 
 import com.thoughtworks.marsrover.command.Command;
+import com.thoughtworks.marsrover.model.BreakdownEnum;
+import com.thoughtworks.marsrover.model.vo.Location;
+import com.thoughtworks.marsrover.model.vo.Position;
+import com.thoughtworks.marsrover.model.vo.Radar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarsRover {
-    private Location location;
-    private Radar radar;
-    private List<BreakdownEnum> breakdowns;
+public abstract class MarsRover {
+    Location location;
+    Radar radar;
+    List<BreakdownEnum> breakdowns;
 
     public MarsRover(int x, int y, String direction) {
         this.location = Location.build(x, y, direction);
@@ -25,7 +29,7 @@ public class MarsRover {
     public MarsRover execute(String cmd) {
         Command command = Command.build(cmd);
         Location next = command.execute(location);
-        if (this.radar.isMarkedTrap(next.getPosition())
+        if (this.hasTraps(cmd, next)
             ||
             this.isBroken(command)) {
             return this;
@@ -34,31 +38,36 @@ public class MarsRover {
         return this;
     }
 
+    abstract boolean hasTraps(String cmd, Location next);
+
+    public boolean inTrap() {
+        return radar.inTrap(this.location.getPosition());
+    }
+
+    ;
+
     public Position getPosition() {
         return location.getPosition();
     }
 
-    public String getDirection() {
+    String getDirection() {
         return location.getDirection().toString();
+    }
+
+
+    boolean isBackward() {
+        return this.location.isBackward();
+    }
+
+    void broken(BreakdownEnum commandClass) {
+        this.breakdowns.add(commandClass);
     }
 
     private void updateLocation(Location location) {
         this.location = location;
     }
 
-    public boolean isBackward() {
-        return this.location.isBackward();
-    }
-
-    public boolean inTrap() {
-        return radar.inTrap(this.location.getPosition());
-    }
-
-    public void broken(BreakdownEnum commandClass) {
-        this.breakdowns.add(commandClass);
-    }
-
-    private boolean isBroken(Command command) {
+    boolean isBroken(Command command) {
         return this.breakdowns.stream()
             .anyMatch(item -> item.getCmdClass().equals(command.getClass()));
     }

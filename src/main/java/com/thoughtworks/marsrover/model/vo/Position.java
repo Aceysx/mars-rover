@@ -1,6 +1,6 @@
-package com.thoughtworks.marsrover.model;
+package com.thoughtworks.marsrover.model.vo;
 
-public class Position {
+public class Position implements ValueObject{
     private int x;
     private int y;
 

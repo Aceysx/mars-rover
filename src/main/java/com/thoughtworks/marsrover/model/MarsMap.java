@@ -1,5 +1,7 @@
 package com.thoughtworks.marsrover.model;
 
+import com.thoughtworks.marsrover.model.vo.Position;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;

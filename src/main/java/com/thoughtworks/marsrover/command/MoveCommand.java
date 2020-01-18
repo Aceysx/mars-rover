@@ -1,8 +1,8 @@
 package com.thoughtworks.marsrover.command;
 
 import com.thoughtworks.marsrover.model.Direction;
-import com.thoughtworks.marsrover.model.Location;
-import com.thoughtworks.marsrover.model.Position;
+import com.thoughtworks.marsrover.model.vo.Location;
+import com.thoughtworks.marsrover.model.vo.Position;
 
 public class MoveCommand implements Command {
     @Override

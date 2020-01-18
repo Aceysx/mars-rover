@@ -1,7 +1,7 @@
 package com.thoughtworks.marsrover;
 
 import com.thoughtworks.marsrover.model.MarsMap;
-import com.thoughtworks.marsrover.model.Position;
+import com.thoughtworks.marsrover.model.vo.Position;
 import org.junit.Test;
 
 import java.util.Arrays;

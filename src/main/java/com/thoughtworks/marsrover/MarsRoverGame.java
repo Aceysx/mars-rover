@@ -1,6 +1,7 @@
 package com.thoughtworks.marsrover;
 
-import com.thoughtworks.marsrover.model.MarsRover;
+import com.thoughtworks.marsrover.model.marsRover.DefaultMarsRover;
+import com.thoughtworks.marsrover.model.marsRover.MarsRover;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class MarsRoverGame {
     }
 
     private void startNewMarsRover() {
-        marsRovers.add(new MarsRover(0, 0, "N"));
+        marsRovers.add(new DefaultMarsRover(0, 0, "N"));
     }
 
     private MarsRover getCurrentMarsRover() {
