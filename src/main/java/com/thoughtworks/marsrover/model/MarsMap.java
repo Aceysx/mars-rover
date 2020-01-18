@@ -1,4 +1,4 @@
-package com.thoughtworks.marsrover;
+package com.thoughtworks.marsrover.model;
 
 import java.util.Arrays;
 import java.util.HashSet;

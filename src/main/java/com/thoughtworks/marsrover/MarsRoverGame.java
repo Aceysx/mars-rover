@@ -1,5 +1,7 @@
 package com.thoughtworks.marsrover;
 
+import com.thoughtworks.marsrover.model.MarsRover;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

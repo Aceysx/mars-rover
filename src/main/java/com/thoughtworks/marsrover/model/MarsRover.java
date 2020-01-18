@@ -1,7 +1,6 @@
-package com.thoughtworks.marsrover;
+package com.thoughtworks.marsrover.model;
 
 import com.thoughtworks.marsrover.command.Command;
-import com.thoughtworks.marsrover.model.Radar;
 
 public class MarsRover {
     private Location location;

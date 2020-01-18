@@ -1,8 +1,8 @@
 package com.thoughtworks.marsrover.command;
 
-import com.thoughtworks.marsrover.Direction;
-import com.thoughtworks.marsrover.Location;
-import com.thoughtworks.marsrover.Position;
+import com.thoughtworks.marsrover.model.Direction;
+import com.thoughtworks.marsrover.model.Location;
+import com.thoughtworks.marsrover.model.Position;
 
 public class TurnLeftCommand implements Command {
     @Override

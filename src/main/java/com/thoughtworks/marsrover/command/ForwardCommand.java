@@ -1,6 +1,6 @@
 package com.thoughtworks.marsrover.command;
 
-import com.thoughtworks.marsrover.Location;
+import com.thoughtworks.marsrover.model.Location;
 
 public class ForwardCommand implements Command {
 

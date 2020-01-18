@@ -1,7 +1,5 @@
 package com.thoughtworks.marsrover.model;
 
-import com.thoughtworks.marsrover.MarsMap;
-import com.thoughtworks.marsrover.Position;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
