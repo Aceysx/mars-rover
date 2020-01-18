@@ -9,7 +9,7 @@ public class Radar implements ValueObject{
 
     }
 
-    public Radar(MarsMap marsMap) {
+    private Radar(MarsMap marsMap) {
         this.marsMap = marsMap;
     }
 

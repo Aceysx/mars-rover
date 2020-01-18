@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static java.lang.Math.random;
+
 public class MarsMap {
     private List<Position> traps;
     private Set<Position> markTraps;
@@ -18,8 +20,8 @@ public class MarsMap {
 
     public static MarsMap build() {
         List<Position> DEFAULT_TRAPS = Arrays.asList(
-            Position.build(1, 1),
-            Position.build(1, 2)
+            Position.build((int) (random() * 50) + 1, (int) (random() * 50) + 1),
+            Position.build((int) (random() * 100) + 50, (int) (random() * 100) + 50)
         );
         return new MarsMap(DEFAULT_TRAPS);
     }

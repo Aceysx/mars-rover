@@ -1,5 +1,6 @@
 package com.thoughtworks.marsrover.model.marsRover;
 
+import com.thoughtworks.marsrover.model.Instruction;
 import com.thoughtworks.marsrover.model.vo.Location;
 import com.thoughtworks.marsrover.model.vo.Radar;
 
@@ -10,7 +11,7 @@ public class BusMarsRover extends MarsRover {
     }
 
     @Override
-    boolean hasTraps(String cmd, Location next) {
+    boolean hasTraps(Instruction instruction, Location next) {
         return this.radar.isMarkedTrap(next.getPosition());
     }
 

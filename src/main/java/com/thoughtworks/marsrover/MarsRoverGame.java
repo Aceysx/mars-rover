@@ -1,5 +1,6 @@
 package com.thoughtworks.marsrover;
 
+import com.thoughtworks.marsrover.model.Instruction;
 import com.thoughtworks.marsrover.model.marsRover.DefaultMarsRover;
 import com.thoughtworks.marsrover.model.marsRover.MarsRover;
 
@@ -15,9 +16,9 @@ public class MarsRoverGame {
         marsRovers.add(firstMarsRover);
     }
 
-    public void start(String cmd) {
+    public void start(Instruction instruction) {
         MarsRover marsRover = getCurrentMarsRover();
-        marsRover.execute(cmd);
+        marsRover.execute(instruction);
         if (marsRover.inTrap()) {
             this.startNewMarsRover();
         }

@@ -1,7 +1,9 @@
 package com.thoughtworks.marsrover.model.marsRover;
 
 import com.thoughtworks.marsrover.command.Command;
+import com.thoughtworks.marsrover.command.CommandFactory;
 import com.thoughtworks.marsrover.model.BreakdownEnum;
+import com.thoughtworks.marsrover.model.Instruction;
 import com.thoughtworks.marsrover.model.vo.Location;
 import com.thoughtworks.marsrover.model.vo.Position;
 import com.thoughtworks.marsrover.model.vo.Radar;
@@ -26,19 +28,22 @@ public abstract class MarsRover {
         this.breakdowns = new ArrayList<>();
     }
 
-    public MarsRover execute(String cmd) {
-        Command command = Command.build(cmd);
+    public MarsRover execute(Instruction instruction) {
+        Command command = CommandFactory.build(instruction);
         Location next = command.execute(location);
-        if (this.hasTraps(cmd, next)
-            ||
-            this.isBroken(command)) {
-            return this;
+        if (canMove(instruction, command, next)) {
+            this.updateLocation(next);
         }
-        this.updateLocation(next);
         return this;
     }
 
-    abstract boolean hasTraps(String cmd, Location next);
+    private boolean canMove(Instruction instruction, Command command, Location next) {
+        return !(this.hasTraps(instruction, next)
+            ||
+            this.isBroken(command));
+    }
+
+    abstract boolean hasTraps(Instruction cmd, Location next);
 
     public boolean inTrap() {
         return radar.inTrap(this.location.getPosition());

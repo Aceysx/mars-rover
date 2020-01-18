@@ -1,5 +1,6 @@
 package com.thoughtworks.marsrover.model.marsRover;
 
+import com.thoughtworks.marsrover.model.Instruction;
 import com.thoughtworks.marsrover.model.vo.Location;
 import com.thoughtworks.marsrover.model.vo.Radar;
 
@@ -14,13 +15,13 @@ public class DefaultMarsRover extends MarsRover {
     }
 
     @Override
-    boolean hasTraps(String cmd, Location next) {
-        if ("L".equals(cmd)) {
+    boolean hasTraps(Instruction instruction, Location next) {
+        if (Instruction.L.equals(instruction)) {
             return next.getDirection().right(next.getPosition())
                 .stream()
                 .anyMatch(item -> this.radar.isMarkedTrap(item));
         }
-        if ("R".equals(cmd)) {
+        if (Instruction.R.equals(instruction)) {
             return next.getDirection().left(next.getPosition())
                 .stream()
                 .anyMatch(item -> this.radar.isMarkedTrap(item));

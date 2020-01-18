@@ -1,5 +1,6 @@
 package com.thoughtworks.marsrover.model.marsRover;
 
+import com.thoughtworks.marsrover.model.Instruction;
 import com.thoughtworks.marsrover.model.vo.Position;
 import com.thoughtworks.marsrover.model.vo.Radar;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class BusMarsRoverTest {
         when(radar.isMarkedTrap(any())).thenReturn(true);
 
         MarsRover marsRover = new BusMarsRover(0, 0, "N", radar);
-        marsRover.execute("L");
+        marsRover.execute(Instruction.L);
         verify(radar, times(1)).isMarkedTrap(any());
         assertEquals(Position.build(0, 0), marsRover.getPosition());
     }
@@ -33,7 +34,7 @@ public class BusMarsRoverTest {
         when(radar.isMarkedTrap(any())).thenReturn(true);
 
         MarsRover marsRover = new BusMarsRover(0, 0, "N", radar);
-        marsRover.execute("R");
+        marsRover.execute(Instruction.R);
         verify(radar, times(1)).isMarkedTrap(any());
         assertEquals(Position.build(0, 0), marsRover.getPosition());
     }
